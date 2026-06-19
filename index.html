@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cotizador PC · Ensamble de equipo</title>
+<meta name="description" content="Generador de cotizaciones de ensamble de PC con historial, catálogo de componentes y exportación a PDF.">
+<meta name="theme-color" content="#1c2230">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cotizador PC">
+<link rel="stylesheet" href="styles.css">
+<script src="vendor/xlsx.full.min.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== BARRA SUPERIOR ===================== -->
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="brand">
+      <img class="mark" src="icons/icon-192.png" alt="">
+      <div>
+        <small>Ensamble de equipo</small>
+        <b>Cotizador&nbsp;PC</b>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <button data-view="list" class="active">Cotizaciones</button>
+      <button data-view="catalog">Componentes</button>
+      <button data-view="settings">Ajustes</button>
+    </nav>
+    <div class="spacer"></div>
+    <div class="data-menu">
+      <button class="iconbtn" id="dataBtn" title="Respaldo y datos" aria-label="Respaldo y datos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="19" height="19"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
+      </button>
+      <div class="menu" id="dataMenu">
+        <button id="mExport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 21h14"/></svg> Exportar respaldo (JSON)</button>
+        <button id="mImport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg> Importar respaldo (JSON)</button>
+        <div class="sep"></div>
+        <button id="mTemplate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg> Descargar plantilla Excel</button>
+        <div class="sep"></div>
+        <button id="mWipe" class="danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg> Borrar todos los datos</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app"><!-- las vistas se renderizan aquí --></main>
+
+<!-- raíz para impresión / PDF -->
+<div id="print-root"></div>
+
+<!-- overlay genérico para modales -->
+<div class="overlay" id="overlay"><div class="modal" id="modalBox"></div></div>
+
+<!-- toasts -->
+<div class="toast-wrap" id="toasts"></div>
+
+<!-- inputs ocultos para archivos -->
+<input type="file" id="fileJson" accept="application/json,.json" hidden>
+<input type="file" id="fileXlsx" accept=".xlsx,.xls,.csv" hidden>
+<input type="file" id="fileLogo" accept="image/*" hidden>
+
+<script src="app.js" defer></script>
+</body>
+</html>
