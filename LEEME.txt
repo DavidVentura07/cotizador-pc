@@ -1,0 +1,44 @@
+# Cotizador PC — Guía rápida
+
+App para generar cotizaciones de ensamble de PC con historial, catálogo de
+precios de componentes, importación de Excel y exportación a PDF.
+Funciona como PWA: se instala en el celular/iPad y trabaja sin internet.
+
+------------------------------------------------------------
+SUBIRLA A GITHUB PAGES (una sola vez)
+------------------------------------------------------------
+1. Entra a github.com y crea un repositorio nuevo (por ejemplo: "cotizador-pc").
+2. En el repo, botón "Add file" > "Upload files".
+3. Arrastra TODO el contenido de la carpeta "cotizador-pc"
+   (los archivos y las carpetas fonts/, vendor/, icons/). Confirma el commit.
+4. Ve a Settings > Pages.
+5. En "Branch" elige "main" y carpeta "/ (root)". Guarda.
+6. Espera ~1 minuto. GitHub te dará una liga tipo:
+   https://TU-USUARIO.github.io/cotizador-pc/
+7. Abre esa liga en Safari (iPhone/iPad) y usa "Compartir" >
+   "Agregar a inicio" para instalarla como app.
+
+------------------------------------------------------------
+IMPORTANTE SOBRE TUS DATOS
+------------------------------------------------------------
+- La app carga desde la web, pero los datos (cotizaciones, catálogo, ajustes)
+  se guardan en CADA dispositivo por separado. NO se sincronizan solos entre
+  tu laptop y tu celular.
+- Para pasar tu historial de un equipo a otro: en el menú de datos (icono de
+  base de datos, arriba a la derecha) usa "Exportar respaldo (JSON)" en un
+  equipo e "Importar respaldo (JSON)" en el otro.
+- Haz respaldos seguido. Si borras los datos del navegador, se pierden.
+
+------------------------------------------------------------
+CUANDO ACTUALICES ALGÚN ARCHIVO
+------------------------------------------------------------
+Si en el futuro cambias algún archivo, abre "sw.js" y sube el número de
+versión (la línea CACHE_VERSION = "cotizador-pc-v1" → "...-v2"). Eso obliga
+a los dispositivos a descargar la versión nueva.
+
+------------------------------------------------------------
+EXCEL
+------------------------------------------------------------
+Dentro de la app, en el menú de datos, "Descargar plantilla Excel" genera el
+formato para capturar componentes y luego importarlos con "Importar Excel".
+(También se incluye el archivo "Plantilla_Cotizador_PC.xlsx" aparte.)
